@@ -48,7 +48,7 @@ public class App extends Application {
         if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             configureXLog();
-            Log.setLogImp(new Xlog());
+
         } else {
             int pid = android.os.Process.myPid();
             String processName = null;
@@ -61,6 +61,7 @@ public class App extends Application {
             }
             configureXLog();
         }
+        Log.setLogImp(new Xlog());
     }
 
     private static void configureXLog() {
@@ -70,5 +71,6 @@ public class App extends Application {
         int logLevel = BuildConfig.DEBUG ? Xlog.LEVEL_VERBOSE : Xlog.LEVEL_INFO;
         Xlog.open(true, logLevel, Xlog.AppednerModeAsync, "", logPath, logFileName);
         Xlog.setConsoleLogOpen(BuildConfig.DEBUG);
+
     }
 }

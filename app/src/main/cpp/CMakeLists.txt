@@ -5,7 +5,7 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
-set(lib_src_DIR ${CMAKE_SOURCE_DIR}/${ANDROID_ABI})
+set(lib_src_DIR ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI})
 
 add_library(
             native-lib
@@ -35,6 +35,16 @@ set_target_properties(
             PROPERTIES IMPORTED_LOCATION
             ${lib_src_DIR}/libstlport_shared.so
             )
+add_library(
+            marsstn
+            SHARED
+            IMPORTED
+            )
+set_target_properties(
+            marsstn
+            PROPERTIES IMPORTED_LOCATION
+            ${lib_src_DIR}/libmarsstn.so
+)
 
 
 # Searches for a specified prebuilt library and stores the path as a
