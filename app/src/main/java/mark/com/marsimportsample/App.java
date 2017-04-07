@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 
+import com.tencent.mars.stn.StnLogic;
 import com.tencent.mars.xlog.Log;
 import com.tencent.mars.xlog.Xlog;
 
@@ -62,6 +63,7 @@ public class App extends Application {
             configureXLog();
         }
         Log.setLogImp(new Xlog());
+        StnLogic.Task task = new StnLogic.Task();
     }
 
     private static void configureXLog() {
