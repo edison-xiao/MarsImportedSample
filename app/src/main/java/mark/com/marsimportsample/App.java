@@ -4,13 +4,19 @@ import android.Manifest;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.os.Looper;
 import android.support.v4.content.ContextCompat;
 
+import com.tencent.mars.Mars;
 import com.tencent.mars.stn.StnLogic;
 import com.tencent.mars.xlog.Log;
 import com.tencent.mars.xlog.Xlog;
+
+import mark.com.stnservice.MainServiceImpl;
+import mark.com.stnservice.MainServiceProxy;
 
 /**
  * Created by fanzhengchen on 4/7/17.
@@ -19,11 +25,10 @@ import com.tencent.mars.xlog.Xlog;
 public class App extends Application {
 
     static {
-//        Mars.loadDefaultMarsLibrary();
+        Mars.loadDefaultMarsLibrary();
 
     }
 
-    private final RiderMarsServiceProfile profile = new RiderMarsServiceProfile();
 
     private static Context mContext;
 
@@ -32,14 +37,27 @@ public class App extends Application {
         super.onCreate();
         mContext = this;
         openXLog();
-        System.out.println("fuck");
         Log.i("fuck", "fuck open");
+//        Log.printErrStackTrace();
+
+//        Throwable throwable = new Throwable();
+
+        StackTraceElement element = Thread.currentThread().getStackTrace()[0];
+        element = new Throwable().getStackTrace()[0];
+        Log.i("fuck", "(" + element.getFileName() + ":" +
+                element.getLineNumber() +
+                ")");
+        MainServiceProxy.getInstance()
+                .init(this, Looper.getMainLooper());
+
     }
 
     @Override
     public void onTerminate() {
         super.onTerminate();
         Log.appenderClose();
+        Intent intent = new Intent(this, MainServiceImpl.class);
+        stopService(intent);
     }
 
     /**
@@ -68,7 +86,7 @@ public class App extends Application {
 
     private static void configureXLog() {
         final String SDCARD = Environment.getExternalStorageDirectory().getAbsolutePath();
-        final String logPath = SDCARD + "marsrider/log";
+        final String logPath = SDCARD + "/marsrider";
         final String logFileName = "marslogfile";
         int logLevel = BuildConfig.DEBUG ? Xlog.LEVEL_VERBOSE : Xlog.LEVEL_INFO;
         Xlog.open(true, logLevel, Xlog.AppednerModeAsync, "", logPath, logFileName);

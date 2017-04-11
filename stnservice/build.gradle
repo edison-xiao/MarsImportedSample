@@ -12,6 +12,13 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+//        externalNativeBuild {
+//            cmake {
+//                cppFlags "-frtti -fexceptions -std=c++11"
+//                abiFilters "armeabi", "armeabi-v7a", "x86"
+//            }
+//        }
+
     }
     buildTypes {
         release {
@@ -19,6 +26,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+//    externalNativeBuild {
+//        cmake {
+//            path "src/main/cpp/CMakeLists.txt"
+//        }
+//    }
 }
 
 dependencies {
@@ -26,7 +39,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-   compile 'com.tencent.mars:mars-core:1.1.4'
+    compile 'io.netty:netty-common:4.1.9.Final'
+    compile 'com.orhanobut:logger:1.15'
+    compile 'com.tencent.mars:mars-core:1.1.4'
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
 }

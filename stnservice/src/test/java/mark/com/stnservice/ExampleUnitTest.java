@@ -14,4 +14,16 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void testBuffConvert() {
+
+        final String raw = "ooooooooasdfafpdappasd";
+        byte[] bytes = raw.getBytes();
+        String newString = new String(bytes);
+
+        System.out.println(raw + "\n" + newString);
+        assertEquals(newString, raw);
+    }
+
 }

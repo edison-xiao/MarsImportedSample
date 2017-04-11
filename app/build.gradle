@@ -41,6 +41,7 @@ dependencies {
     compile 'com.tencent.mars:mars-core:1.1.4'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
+    compile project(':stnservice')
     testCompile 'junit:junit:4.12'
-    testCompile project(':stnservice')
+
 }

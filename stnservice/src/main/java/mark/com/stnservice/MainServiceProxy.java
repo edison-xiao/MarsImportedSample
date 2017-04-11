@@ -1,11 +1,15 @@
 package mark.com.stnservice;
 
+import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.RemoteException;
+
+import com.tencent.mars.Mars;
 
 /**
  * Created by fanzhengchen on 4/10/17.
@@ -31,7 +35,7 @@ public class MainServiceProxy implements ServiceConnection {
 
 
     private MainServiceProxy() {
-
+        Mars.loadDefaultMarsLibrary();
     }
 
     public static MainServiceProxy getInstance() {
@@ -50,7 +54,6 @@ public class MainServiceProxy implements ServiceConnection {
 
     public void init(Context context, Looper looper) {
         mContext = context;
-
         /**
          * 启动marsService
          */
@@ -64,7 +67,6 @@ public class MainServiceProxy implements ServiceConnection {
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
-
     }
 
     /**
@@ -73,5 +75,23 @@ public class MainServiceProxy implements ServiceConnection {
     private void startMarsService() {
         Intent intent = new Intent(mContext, MainServiceImpl.class);
         mContext.startService(intent);
+
+        if (!mContext.bindService(intent, mInstance, Service.BIND_AUTO_CREATE)) {
+            Throwable throwable = new Throwable("bind service failed");
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public void send(TaskWrapper wrapper) {
+
+
+        if (mMarsService == null) {
+            return;
+        }
+        try {
+            mMarsService.send(wrapper);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }
