@@ -1,0 +1,7 @@
+syntax = "proto3";
+// import "ResultCode.proto";
+option java_package = "com.xinguang.tubobo.msgprotocol.transfer";
+option java_outer_classname = "NotifyTaskOperateResultPB";
+message NotifyTaskOperateResult{
+    string taskNo = 1;
+}

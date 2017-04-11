@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_package = "com.xinguang.tubobo.msgprotocol.transfer";
+option java_outer_classname = "TaskOperateEnumPB";
+enum TaskOperateEnum {
+    GRAB = 0;//抢单
+    PICK = 1;//取货
+    FINISH = 2;//送达
+}

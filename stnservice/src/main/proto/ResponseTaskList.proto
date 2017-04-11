@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_package = "com.xinguang.tubobo.msgprotocol.transfer";
+option java_outer_classname = "ResponseTaskListPB";
+
+import "ResponseTaskListItem.proto";
+message ResponseTaskList{
+    repeated ResponseTaskListItem items = 1;
+}

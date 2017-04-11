@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "com.xinguang.msgprotocol.client.transfer";
+option java_outer_classname = "DirectionPB";
+
+enum Direction {
+    PUSH = 0;
+    REQUEST = 1;
+    RESPONSE = 2;
+}

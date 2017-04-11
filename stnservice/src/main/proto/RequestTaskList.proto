@@ -1,0 +1,7 @@
+syntax = "proto3";
+option java_package = "com.xinguang.tubobo.msgprotocol.transfer";
+option java_outer_classname = "RequestTaskListPB";
+
+message RequestTaskList{
+    int32 taskStatus =1 ;
+}

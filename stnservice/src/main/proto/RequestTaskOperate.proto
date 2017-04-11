@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_package = "com.xinguang.tubobo.msgprotocol.transfer";
+option java_outer_classname = "RequestTaskOperatePB";
+import "TaskOperateEnum.proto";
+message RequestTaskOperate{
+    string taskNo = 1;
+    TaskOperateEnum operate = 2;
+}

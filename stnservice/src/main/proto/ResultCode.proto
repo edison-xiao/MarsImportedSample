@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "com.xinguang.tubobo.msgprotocol.transfer";
+option java_outer_classname = "ResultCodePB";
+
+enum ResultCode {
+    SUCCESS = 0;
+    FAILURE = 1;
+    SERVER_ERROR = 2;//内部服务错误
+    UNLONGIN = 100;//未登录
+    UNAUTHED = 101;//未认证
+    TASK_UN_GETABLE = 102;//任务不可抢
+    INSUFFICIENT_DEPOSIT = 103;//押金不足
+}

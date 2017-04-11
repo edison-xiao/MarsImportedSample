@@ -1,0 +1,22 @@
+syntax = "proto3";
+option java_package = "com.xinguang.tubobo.msgprotocol.transfer";
+option java_outer_classname = "ResponseTaskListItemPB";
+
+message ResponseTaskListItem{
+
+    string orderId = 1;
+    string senderAddress = 2;
+    float senderDistance = 3;
+    string senderName =7;
+
+    string receiverAddress = 8;
+    float receiverDistance = 9;
+    string receiverName = 12;
+    string receiverPhone = 13;
+
+    string orderType = 14;
+    float income = 15;
+    float deliveryFee = 16;
+    float tipFee = 17;
+
+}

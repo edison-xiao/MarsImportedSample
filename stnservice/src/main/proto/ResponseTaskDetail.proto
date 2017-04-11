@@ -1,0 +1,26 @@
+syntax = "proto3";
+option java_package = "com.xinguang.tubobo.msgprotocol.transfer";
+option java_outer_classname = "ResponseTaskDetailPB";
+message ResponseTaskDetail{
+
+    string taskNo = 1;
+    string senderAddress = 2;
+    float senderDistance = 3;
+    float senderLatitude = 4;
+    float senderLongitude = 5;
+    string senderPhone =6;
+    string senderName =7;
+
+    string receiverAddress = 8;
+    float receiverDistance = 9;
+    float receiverLatitude = 10;
+    float receiverLongitude = 11;
+    string receiverName = 12;
+    string receiverPhone = 13;
+
+    string goodsType = 14;
+    float income = 15;
+    float deliveryFee = 16;
+    float tipFee = 17;
+}
+

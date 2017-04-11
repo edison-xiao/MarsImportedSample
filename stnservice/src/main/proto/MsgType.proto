@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "com.xinguang.msgprotocol.client.transfer";
+option java_outer_classname = "MsgTypePB";
+
+enum MsgType {
+    HEART_BEAT = 0;
+    BUSINESS_API = 1;
+    GPS_REPORT = 2;
+}

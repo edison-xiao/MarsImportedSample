@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "com.xinguang.tubobo.msgprotocol.transfer";
+option java_outer_classname = "CommandPB";
+
+enum Command {
+    RESERVED = 0;//保留值，不用
+    NOTIFY_DISPATCH_TASK = 200;//任务推送
+    REQUEST_TASK_OPERATE = 201;//任务操作，包括抢单、取货、配送完成
+    REQUEST_TASK_DETAIL = 202;//请求任务详情
+    REQUEST_TASK_LIST = 203;//请求可抢任务列表
+}

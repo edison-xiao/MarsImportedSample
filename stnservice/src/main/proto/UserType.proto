@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "com.xinguang.msgprotocol.client.transfer";
+option java_outer_classname = "UserTypePB";
+
+enum UserType {
+    RIDER = 0;//骑士
+    MERCHANT = 1;//商家
+}

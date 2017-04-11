@@ -1,0 +1,23 @@
+syntax = "proto3";
+option java_package = "com.xinguang.tubobo.msgprotocol.transfer";
+option java_outer_classname = "NotifyTaskDispatchPB";
+message NotifyTaskDispatch{
+    string taskNo = 1;
+    string senderAddress = 2;
+    float senderDistance = 3;
+    double senderLatitude = 4;
+    double senderLongitude = 5;
+    string senderPhone =6;
+    string senderName =7;
+
+    string receiverAddress = 8;
+    float receiverDistance = 9;
+    double receiverLatitude = 10;
+    double receiverLongitude = 11;
+    string receiverName = 12;
+    string receiverPhone = 13;
+
+    string senderAvatarUrl=14;
+    float deliveryFee = 15;
+    float tipFee = 16;
+}

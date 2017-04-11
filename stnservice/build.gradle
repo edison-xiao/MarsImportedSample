@@ -27,11 +27,15 @@ android {
         }
     }
 
-//    externalNativeBuild {
-//        cmake {
-//            path "src/main/cpp/CMakeLists.txt"
-//        }
-//    }
+
+}
+
+def getNettyVersion() {
+    '4.1.9.Final'
+}
+
+ext {
+    nettyVersion = '4.1.9.Final'
 }
 
 dependencies {
@@ -39,9 +43,16 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    // https://mvnrepository.com/artifact/com.googlecode.protobuf-java-format/protobuf-java-format
+//    compile 'com.googlecode.protobuf-java-format:protobuf-java-format:1.4'
+
+//    compile 'com.google.protobuf-java-format:protobuf-java-format:1.4'
+    compile 'com.google.protobuf:protobuf-java:3.2.0'
+    compile "io.netty:netty-codec:4.1.9.Final"
     compile 'io.netty:netty-common:4.1.9.Final'
+    compile 'io.netty:netty-transport:4.1.9.Final'
     compile 'com.orhanobut:logger:1.15'
     compile 'com.tencent.mars:mars-core:1.1.4'
-    compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
 }

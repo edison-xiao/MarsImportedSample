@@ -1,16 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-    package="mark.com.stnservice">
+    package="xinguang">
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
+        <!--<service android:name="mark.com.com.xinguang.MainServiceNative"-->
+        <!--android:process=":MainService"/>-->
 
-        <service
-            android:name=".MainServiceImpl"
-            android:process=":mainService" />
-
+        <service android:name="com.xinguang.MainServiceNative" />
         <receiver
             android:name="com.tencent.mars.BaseEvent$ConnectionReceiver"
             android:process=":marsservice" />

@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
 
-        <service android:name="mark.com.stnservice.MainServiceImpl" />
     </application>
 
 </manifest>

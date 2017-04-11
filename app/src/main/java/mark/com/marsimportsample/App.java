@@ -11,12 +11,11 @@ import android.os.Looper;
 import android.support.v4.content.ContextCompat;
 
 import com.tencent.mars.Mars;
-import com.tencent.mars.stn.StnLogic;
 import com.tencent.mars.xlog.Log;
 import com.tencent.mars.xlog.Xlog;
 
-import mark.com.stnservice.MainServiceImpl;
-import mark.com.stnservice.MainServiceProxy;
+import com.xinguang.MainServiceNative;
+import com.xinguang.MainServiceProxy;
 
 /**
  * Created by fanzhengchen on 4/7/17.
@@ -38,15 +37,7 @@ public class App extends Application {
         mContext = this;
         openXLog();
         Log.i("fuck", "fuck open");
-//        Log.printErrStackTrace();
 
-//        Throwable throwable = new Throwable();
-
-        StackTraceElement element = Thread.currentThread().getStackTrace()[0];
-        element = new Throwable().getStackTrace()[0];
-        Log.i("fuck", "(" + element.getFileName() + ":" +
-                element.getLineNumber() +
-                ")");
         MainServiceProxy.getInstance()
                 .init(this, Looper.getMainLooper());
 
@@ -56,7 +47,7 @@ public class App extends Application {
     public void onTerminate() {
         super.onTerminate();
         Log.appenderClose();
-        Intent intent = new Intent(this, MainServiceImpl.class);
+        Intent intent = new Intent(this, MainServiceNative.class);
         stopService(intent);
     }
 
@@ -81,7 +72,6 @@ public class App extends Application {
             configureXLog();
         }
         Log.setLogImp(new Xlog());
-        StnLogic.Task task = new StnLogic.Task();
     }
 
     private static void configureXLog() {

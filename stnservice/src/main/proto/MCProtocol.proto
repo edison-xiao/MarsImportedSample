@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "MsgType.proto";
+import "Direction.proto";
+import "google/protobuf/any.proto";
+
+option java_package = "com.xinguang.msgprotocol.client.transfer";
+option java_outer_classname = "MCProtocolPB";
+
+message MCProtocol {
+    string version = 1;
+    MsgType type = 2;//消息类型，心跳，业务还是GPS上报
+    int32 command = 3;//区分哪个api业务系统与相应的app约定
+    string clientSN = 4;//客户端识别码
+    string appClientID = 5;//与服务端约定，格式为：业务平台名-客户端名-操作系统，如tubobo-pda-android
+    string platformID = 6;//服务端平台名如tubobo
+    string reqID = 7;//请求编号
+    Direction direction = 8;//区分是请求、响应或推送
+    string token = 9;//token值，需要登陆后才能
+
+    google.protobuf.Any body = 16;
+}

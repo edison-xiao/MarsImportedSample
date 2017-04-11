@@ -6,9 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import mark.com.stnservice.MainServiceProxy;
-import mark.com.stnservice.TextTaskWrapper;
-
 public class MainActivity extends AppCompatActivity {
 
     // Used to load the 'native-lib' library on application startup.
@@ -25,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainServiceProxy.getInstance().send(new TextTaskWrapper("wasdafafa"));
+
             }
         });
 

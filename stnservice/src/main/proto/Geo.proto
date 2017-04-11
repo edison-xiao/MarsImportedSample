@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "com.xinguang.msgprotocol.client.transfer";
+option java_outer_classname = "GeoPB";
+import "UserType.proto";
+message Geo {
+    UserType userType = 1;
+    double latitude = 2;
+    double longitude = 3;
+}
